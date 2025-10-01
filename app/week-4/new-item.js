@@ -13,5 +13,11 @@ export default function NewItem() {
     setQuantity(quantity - 1);
   };
 
-  // return();
+  return (
+    <div>
+      <p>{quantity}</p>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
 }
