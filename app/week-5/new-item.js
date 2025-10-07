@@ -19,6 +19,20 @@ export default function NewItem() {
     }
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const item = {
+      name: name,
+      quantity: quantity,
+      category: category
+    };
+    console.log(item);
+    alert("Item: " + name + "Quantity: " + quantity + "Category: " + category);
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
+  }
+
   return (
     <div className="shadow-2xl border border-pink-800 bg-pink-100 rounded-md p-4 my-4 mx-auto max-w-xl">
       <p className="text-xl font-semibold text-pink-600">Quantity: {quantity}</p>
