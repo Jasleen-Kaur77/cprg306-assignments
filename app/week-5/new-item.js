@@ -36,7 +36,7 @@ export default function NewItem() {
     };
 
     console.log(item);
-    alert("Item: " + name + "Quantity: " + quantity + "Category: " + category);
+    alert("Item: " + name + "\nQuantity: " + quantity + "\nCategory: " + category);
     setName("");
     setQuantity(1);
     setCategory("produce");
@@ -44,48 +44,53 @@ export default function NewItem() {
 
   return (
 
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto outline-indigo-100 outline-4 p-8">
+      <label htmlFor="name" className="text-xl">Item Name</label>
       <input
         type="text"
         id="name"
         value={name}
         onChange={handleNameChange}
-        className="outline mx-4"
+        className="block outline w-full text-xl h-11 my-2 rounded-lg"
         name="name"
         placeholder="e.g., milk, 4 L 🥛"
         required
       ></input>
 
-      <div className="shadow-2xl border border-pink-800 bg-pink-100 rounded-md p-4 my-4 mx-auto max-w-xl">
-        <p className="text-xl font-semibold text-pink-600">Quantity: {quantity}</p>
-        <div className="flex justify-items-start gap-4 mb-4">
-          <button type="button" onClick={decrement} disabled={quantity === 1} className="bg-pink-500 hover:bg-pink-700 disabled:bg-pink-300 rounded m-3 p-3 text-white w-12 font-bold text-2xl"> - </button>
-          <button type="button" onClick={increment} disabled={quantity === 20} className="bg-pink-500 hover:bg-pink-700 disabled:bg-pink-300 rounded m-3 p-3 text-white w-12 font-bold text-2xl"> + </button>
+      <div className="my-4">
+        <p className="text-xl my-2">Quantity (1-20)</p>
+        <p className="text-xl text-gray-500 font-extralight my-2">Current: {quantity}</p>
+        <div className="gap-4">
+          <button type="button" onClick={decrement} disabled={quantity === 1} className="bg-gray-300 hover:bg-blue-300 disabled:bg-gray-200 rounded m-3 p-3 w-14 font-bold text-2xl"> - </button>
+          <button type="button" onClick={increment} disabled={quantity === 20} className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-200 rounded m-3 p-3 w-14 font-bold text-2xl text-white"> + </button>
         </div>
-        <p className="text-pink-400">Allowed range 1-20</p>
+        <p className="text-gray-500 my-2">Allowed range 1-20</p>
       </div>
+
+      <p className="text-xl my-2">Category</p>
 
       <select
         id="category"
         value={category}
         onChange={handleCategoryChange}
+        className="outline w-full text-xl h-11 my-2 rounded-lg"
       >
         <option value="produce">Produce</option>
         <option value="dairy">Dairy</option>
         <option value="bakery">Bakery</option>
         <option value="meat">Meat</option>
-        <option value="frozenFoods">Frozen Foods</option>
-        <option value="cannedGoods">Canned Goods</option>
-        <option value="dryGoods">Dry Goods</option>
+        <option value="frozen-foods">Frozen Foods</option>
+        <option value="canned-goods">Canned Goods</option>
+        <option value="dry-Goods">Dry Goods</option>
         <option value="beverages">Beverages</option>
         <option value="snacks">Snacks</option>
         <option value="household">Household</option>
-        <option value="otherOptions">Other</option>
+        <option value="other">Other</option>
       </select>
 
       <button
         type="submit"
+        className="block outline h-11 my-4 w-32 text-xl rounded-xl bg-violet-700 text-white"
       >
         Add item
       </button>
