@@ -20,6 +20,15 @@ export default function ItemList() {
       <p>Sort by:</p>
       <button onClick={() => setSortBy("name")}>Name</button>
       <button onClick={() => setSortBy("category")}>Category</button>
+      <ul>
+        {sortedArray.map((item) => (
+          <li key={item.id}>
+            <p>{item.name}</p>
+            <p>{item.quantity}</p>
+            <p>{item.category}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 
