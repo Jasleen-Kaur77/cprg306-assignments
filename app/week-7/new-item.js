@@ -27,16 +27,10 @@ export default function NewItem({ onAddItem }) {
     }
   };
 
-  let num = 0;
-  const generateId = () => {
-    num = num + 1;
-    return num;
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const item = {
-      id: generateId(),
+      id: Math.random().toString(36).substring(2, 9),
       name: name,
       quantity: quantity,
       category: category
