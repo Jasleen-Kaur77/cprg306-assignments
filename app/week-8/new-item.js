@@ -45,7 +45,7 @@ export default function NewItem({ onAddItem }) {
 
   return (
 
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto outline-indigo-100 outline-4 p-8">
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto outline-indigo-100 outline-4 p-8">
       <label htmlFor="name" className="text-xl">Item Name</label>
       <input
         type="text"

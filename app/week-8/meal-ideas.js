@@ -42,7 +42,7 @@ export default function MealIdeas({ ingredient }) {
       <ul className="grid grid-cols-2 gap-3">
         {meals.length > 0 ? (
           meals.map((meal) => (
-            <li key={meal.idMeal} className="border rounded-md p-3 text-left text-xl mr-2">{meal.strMeal}</li>
+            <li key={meal.idMeal} className="border rounded-md p-3 text-left text-xl ">{meal.strMeal}</li>
           ))
         ) : (
           <p className="text-md text-gray-600">No meals found.</p>

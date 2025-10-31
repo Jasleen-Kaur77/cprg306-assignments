@@ -18,21 +18,20 @@ export default function Page() {
       .trim()
       .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
       .toLowerCase();
-    console.log("🧩 Cleaned ingredient:", cleanName);
     setSelectedItemName(cleanName);
   };
 
   return (
     <main>
-      <header className="m-4 p-5 bg-blue-200 mx-auto max-w-2xl rounded-xl">
-        <h1 className="text-2xl lg:text-4xl font-bold text-center text-blue-950" >Shopping List</h1>
+      <header className="m-4 p-5 mx-auto max-w-2xl rounded-xl">
+        <h1 className="text-4xl font-bold text-center text-blue-950" >Shopping List + Meal Ideas</h1>
       </header>
       <section className="flex flex-col md:flex-row gap-6 p-6">
         <div className="md:w-1/2">
           <NewItem onAddItem={handleAddItem} />
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </div>
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 mr-15">
           <MealIdeas ingredient={selectedItemName} />
         </div>
       </section>
