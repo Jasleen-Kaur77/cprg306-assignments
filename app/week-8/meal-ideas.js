@@ -37,15 +37,15 @@ export default function MealIdeas({ ingredient }) {
   return (
     <div>
       <header>
-        <h1>Meal ideas</h1>
+        <h1 className="text-2xl my-4 font-bold">Meal ideas for {ingredient}</h1>
       </header>
-      <ul>
+      <ul className="grid grid-cols-2 gap-3">
         {meals.length > 0 ? (
           meals.map((meal) => (
-            <li key={meal.idMeal}>{meal.strMeal}</li>
+            <li key={meal.idMeal} className="border rounded-md p-3 text-left text-xl mr-2">{meal.strMeal}</li>
           ))
         ) : (
-          <p className="text-5xl text-center">Loading...</p>
+          <p className="text-md text-gray-600">No meals found.</p>
         )}
       </ul>
     </div>
