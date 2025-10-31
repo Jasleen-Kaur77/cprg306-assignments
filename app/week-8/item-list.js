@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Item from "./item";
 
-export default function ItemList({ items }) {
+export default function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
   const sortedArray = [...items].sort((a, b) => {
     if (a[sortBy] > b[sortBy]) return 1;
@@ -22,7 +23,9 @@ export default function ItemList({ items }) {
       </div>
       <ul>
         {sortedArray.map((item) => (
-          <li key={item.id} className="shadow-lg text-left text-xl my-4 mx-auto max-w-2xl border border-blue-800 bg-blue-100 rounded-md p-4">
+          <li key={item.id}
+            onClick={() => onItemSelect(item)}
+            className="shadow-lg text-left text-xl my-4 mx-auto max-w-2xl border border-blue-800 bg-blue-100 rounded-md p-4">
             <p>{item.name}</p>
             <p>Quantity: {item.quantity}</p>
             <p>Category: {item.category}</p>
