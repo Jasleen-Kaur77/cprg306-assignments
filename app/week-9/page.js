@@ -1,11 +1,9 @@
 "use client";
 
-// Import the useUserAuth hook
 import { useUserAuth } from "../contexts/AuthContext";
 import Link from "next/link";
 
 export default function Page() {
-  // Use the useUserAuth hook to get the user object and the login and logout functions
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   const handleLogin = async () => {
@@ -25,19 +23,28 @@ export default function Page() {
   };
 
   return (
-    <main>
+    <main className="flex items-center justify-center mt-24 mb-12">
       {user ? (
-        <div>
-          <p>
-            Welcome, {user.displayName} ({user.email})
-          </p>
-          <button onClick={handleLogout}>
+        <div className="bg-blue-50 p-6 rounded-lg shadow text-center">
+          <h1 className="text-xl font-semibold mb-2">Welcome! {user.displayName}</h1>
+          <p className="text-gray-600 text-sm mb-4">{user.email}</p>
+          <button onClick={handleLogout}
+            className="bg-gray-200 px-4 py-2 my-4 rounded hover:bg-gray-300"
+          >
             Log Out
           </button>
-          <Link href="/week-9/shopping-list"> Go To Shopping List</Link>
+          <Link href="/week-9/shopping-list"
+            className="block bg-blue-600 text-white px-4 py-2 rounded mb-3 hover:bg-blue-700"
+          > Browse Shopping List</Link>
         </div>
       ) : (
-        <button onClick={handleLogin}>Login</button>
+        <div className="bg-blue-50 p-6 rounded-lg shadow text-center">
+          <h1 className="text-xl font-semibold mb-2">Login with Git!</h1>
+          <button onClick={handleLogin}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4"
+          >Login
+          </button>
+        </div>
       )}
     </main>
   );
