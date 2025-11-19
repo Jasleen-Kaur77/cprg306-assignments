@@ -6,12 +6,15 @@ import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 export default function Page() {
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
+  const handleAddItem = async (newItem) => {
+    const id = await addItem(user.uid, newItem);
+    const itemWithId = { id, ...newItem };
+    setItems([...items, itemWithId]);
   };
   const handleItemSelect = (item) => {
     let cleanName = item.name
@@ -27,9 +30,20 @@ export default function Page() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/week-9");
+      router.push("/week-10");
     }
   }, [user, router]);
+
+  useEffect(() => {
+    if (user) {
+      loadItems();
+    }
+  }, [user]);
+
+  const loadItems = async () => {
+    const itemData = await getItems(user.uid);
+    setItems(itemData);
+  };
 
   return (
     <main>
