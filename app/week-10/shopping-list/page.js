@@ -28,6 +28,11 @@ export default function Page() {
   const { user } = useUserAuth();
   const router = useRouter();
 
+  const loadItems = async () => {
+    const itemData = await getItems(user.uid);
+    setItems(itemData);
+  };
+
   useEffect(() => {
     if (!user) {
       router.push("/week-10");
@@ -39,11 +44,6 @@ export default function Page() {
       loadItems();
     }
   }, [user]);
-
-  const loadItems = async () => {
-    const itemData = await getItems(user.uid);
-    setItems(itemData);
-  };
 
   return (
     <main>
