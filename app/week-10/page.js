@@ -33,7 +33,7 @@ export default function Page() {
           >
             Log Out
           </button>
-          <Link href="/week-9/shopping-list"
+          <Link href="/week-10/shopping-list"
             className="block bg-blue-600 text-white px-4 py-2 rounded mb-3 hover:bg-blue-700"
           > Browse Shopping List</Link>
         </div>
