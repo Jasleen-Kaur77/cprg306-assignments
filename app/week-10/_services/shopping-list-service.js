@@ -1,4 +1,4 @@
-import { db } from "../../_utils/firebase.js";
+import { db } from "../../utils/firebase.js";
 import { collection, getDocs, addDoc, query } from "firebase/firestore";
 
 export const getItems = async (userId) => {
